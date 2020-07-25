@@ -1,24 +1,24 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Events Management Services",
+    "title": "Order Services",
     "license": {
-      "name": "Events Management Services"
+      "name": "Order Services"
     },
     "version": "0.0.1"
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3001"
     }
   ],
   "paths": {
-    "/api/events": {
+    "/api/inventories": {
       "get": {
         "tags": [
-          "Events Service"
+          "Inventory Service"
         ],
-        "summary": "Get list of events",
+        "summary": "Get list of inventories",
         "parameters": [
           {
             "name": "token",
@@ -35,7 +35,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EventsResponse"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -55,12 +55,12 @@
         }
       }
     },
-    "/api/event": {
+    "/api/inventory": {
       "post": {
         "tags": [
-          "Events Service"
+          "Inventory Service"
         ],
-        "summary": "Create new event",
+        "summary": "Create new inventory",
         "parameters": [
           {
             "name": "token",
@@ -77,7 +77,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EventsResponse"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -97,12 +97,12 @@
         }
       }
     },
-    "/api/event/{eventId}": {
+    "/api/inventory/{inventoryId}": {
       "patch": {
         "tags": [
-          "Events Service"
+          "Inventory Service"
         ],
-        "summary": "Update event by id",
+        "summary": "Update inventory by id",
         "parameters": [
           {
             "name": "token",
@@ -113,7 +113,7 @@
             }
           },
           {
-            "name": "eventId",
+            "name": "inventoryId",
             "in": "path",
             "required": true,
             "description": "Event Id",
@@ -128,7 +128,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EventsResponse"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -149,9 +149,9 @@
       },
       "delete": {
         "tags": [
-          "Events Service"
+          "Inventory Service"
         ],
-        "summary": "Delete event by id",
+        "summary": "Delete inventory by id",
         "parameters": [
           {
             "name": "token",
@@ -162,7 +162,7 @@
             }
           },
           {
-            "name": "eventId",
+            "name": "inventoryId",
             "in": "path",
             "required": true,
             "description": "Event Id",
@@ -177,7 +177,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EventsResponse"
+                  "$ref": "#/components/schemas/Response"
                 }
               }
             }
@@ -200,22 +200,16 @@
   },
   "components": {
     "schemas": {
-      "EventsResponse": {
+      "Response": {
         "properties": {
           "status": {
             "type": "string"
           },
-          "status_code": {
+          "message": {
             "type": "string"
           },
-          "status_message": {
-            "type": "string"
-          },
-          "result": {
+          "data": {
             "type": "object"
-          },
-          "log_request_id": {
-            "type": "string"
           }
         }
       }
